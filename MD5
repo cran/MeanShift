@@ -1,0 +1,9 @@
+e29018870e3f1a7ea5dd651bf754a558 *DESCRIPTION
+419e8a76fdd6c83d67415fc602936c9f *NAMESPACE
+f59b54a0fa432e8c7e8f0da5f35b66b1 *R/auxiliary.R
+949609e99b520403efed7026a3ff1774 *R/blurredmeanshift.R
+c2f42716ad4e886a3362b0323765ab4a *R/meanshift.R
+0c6a3a9f1584a3acffcbde3236bae8a2 *build/partial.rdb
+5d01b3df7ee5157d50e75f7d828df451 *man/MeanShift-package.Rd
+672010502177e93aefa7f0b8fc427f83 *man/bmsClustering.Rd
+e64e71a1a52d71762cc7b157aec4eb0c *man/msClustering.Rd
