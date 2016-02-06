@@ -8,8 +8,8 @@ Function to perform clustering using the mean shift algorithm.
 This function implements the mean shift algorithm. The algorithm locates the modes of a kernel density estimator and associates each data point to exactly one of the modes, thus effectively clustering the data.
 }
 \usage{
-msClustering(X, h = NULL, kernel = epanechnikovKernel, tol.stop = 1e-06,
-tol.epsilon = 0.001, multi.core = FALSE)
+msClustering(X, h = NULL, kernel = "epanechnikovKernel",
+tol.stop = 1e-06, tol.epsilon = 0.001, multi.core = FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -20,12 +20,12 @@ a \eqn{p \times n} matrix containing \eqn{n \ge 1} \eqn{p}-dimensional numeric v
 a strictly positive bandwidth parameter.
 }
   \item{kernel}{
-a kernel function. The following kernels are supported: 
+a kernel function (as a character string). The following kernels are supported: 
 \itemize{
-\item Epanechnikov: \eqn{ K(x) = \frac{3}{2}(1-x^2)I_{[0,1]}(x) }; \code{kernel=epanechnikovKernel}
-\item cubic: \eqn{ K(x) = 4(1-x)^3I_{[0,1]}(x) }; \code{kernel=cubicKernel}
-\item Gaussian: \eqn{ K(x) = \sqrt{\frac{2}{\pi}}e^{-\frac{x^2}{2}}I_{[0,\infty)}(x) }; \code{kernel=gaussianKernel}
-\item exponential \eqn{ K(x) = e^{-x}I_{[0,\infty)}(x) }; \code{kernel=exponentialKernel}.
+\item Epanechnikov: \eqn{ K(x) = \frac{3}{2}(1-x^2)I_{[0,1]}(x) }; \code{kernel="epanechnikovKernel"}
+\item cubic: \eqn{ K(x) = 4(1-x)^3I_{[0,1]}(x) }; \code{kernel="cubicKernel"}
+\item Gaussian: \eqn{ K(x) = \sqrt{\frac{2}{\pi}}e^{-\frac{x^2}{2}}I_{[0,\infty)}(x) }; \code{kernel="gaussianKernel"}
+\item exponential \eqn{ K(x) = e^{-x}I_{[0,\infty)}(x) }; \code{kernel="exponentialKernel"}.
 }
 }
   \item{tol.stop}{
@@ -49,7 +49,7 @@ If \code{h} is not specified in the function call, then \code{h} is by default s
 In their implementation, \code{gaussianKernel} and \code{exponentialKernel} are rescaled to assign probability of at least 0.99 to the unit interval \eqn{[0,1]}. This ensures that all the kernels are roughly on the same scale.
 
 To specify the number of cores when \code{multi.core=TRUE}, the option
-\code{mc.cores} needs to be set with \code{options( mc.core=n.cores )}, where
+\code{mc.cores} needs to be set with \code{options( mc.cores=n.cores )}, where
 \code{n.cores} is the number of cores that the mean shift algorithm is allowed to use for parallel computation.
 }
 \value{

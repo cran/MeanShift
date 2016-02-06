@@ -1,9 +1,9 @@
-e29018870e3f1a7ea5dd651bf754a558 *DESCRIPTION
-419e8a76fdd6c83d67415fc602936c9f *NAMESPACE
+355d4baefda7b7c25e7938aba160f3a2 *DESCRIPTION
+f86c31393e30f47427423fc1fbd7c441 *NAMESPACE
 f59b54a0fa432e8c7e8f0da5f35b66b1 *R/auxiliary.R
-949609e99b520403efed7026a3ff1774 *R/blurredmeanshift.R
-c2f42716ad4e886a3362b0323765ab4a *R/meanshift.R
-0c6a3a9f1584a3acffcbde3236bae8a2 *build/partial.rdb
-5d01b3df7ee5157d50e75f7d828df451 *man/MeanShift-package.Rd
-672010502177e93aefa7f0b8fc427f83 *man/bmsClustering.Rd
-e64e71a1a52d71762cc7b157aec4eb0c *man/msClustering.Rd
+6d9acea0c191e2b5311f3a32fd2c5275 *R/blurredmeanshift.R
+1bed5821bdfc5d5561e6d51e1ed7eb29 *R/meanshift.R
+d0fa84943986621e814cd1792f4217b7 *build/partial.rdb
+c3cdab02d4f1dd591409a15d61480522 *man/MeanShift-package.Rd
+ec669ec54edd271b9383ca7aaed0e830 *man/bmsClustering.Rd
+b46583c20bff71eab3e2047d682c69bd *man/msClustering.Rd

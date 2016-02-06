@@ -13,6 +13,8 @@
 \packageDESCRIPTION{MeanShift}
 %%\packageIndices{MeanShift}
 %%~~ An overview of how to use the package, including the most important functions ~~
+See <https://normaldeviate.wordpress.com/2012/07/20/the-amazing-mean-shift-algorithm/>
+for a good introduction to the mean shift algorithm.
 }
 \author{
 \packageAuthor{MeanShift}

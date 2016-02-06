@@ -1,4 +1,4 @@
-blurredMeanShiftOperator <- function( X, h=1, kernel=epanechnikovKernel ){
+blurredMeanShiftOperator <- function( X, h=1, kernel="epanechnikovKernel" ){
 	
 	n.curves <- ncol( X )
 	
@@ -9,6 +9,7 @@ blurredMeanShiftOperator <- function( X, h=1, kernel=epanechnikovKernel ){
 	scaled.distances <- distances / h
 	
 	## evaluate kernel
+	kernel <- get( kernel )
 	kernel.values <- matrix( kernel( scaled.distances ), nrow=n.curves,
 	ncol=n.curves ) 
 	
@@ -28,7 +29,7 @@ blurredMeanShiftOperator <- function( X, h=1, kernel=epanechnikovKernel ){
 }
 
 blurredMeanShiftAlgorithm <- function( X, h=NULL,
-kernel=epanechnikovKernel, tol.stop=1e-6, max.iter=100 ){
+kernel="epanechnikovKernel", tol.stop=1e-6, max.iter=100 ){
 	
 	if( is.null( h ) ){
 		
@@ -70,9 +71,19 @@ kernel=epanechnikovKernel, tol.stop=1e-6, max.iter=100 ){
 	
 	if( not.converged ){
 		
-		warning( "Reached maximum number of iterations (", 
-		as.character( max.iter),"). The algorithm ",
-		"didn't converge." )
+		if( kernel == "epanechnikovKernel"){
+			
+			warning( "Reached maximum number of iterations (", 
+			as.character( max.iter),"). The algorithm ",
+			"didn't converge. Try increasing max.iter." )
+			
+		} else{
+
+			warning( "Reached maximum number of iterations (", 
+			as.character( max.iter),"). The algorithm ",
+			"didn't converge. Try kernel=\"epanechnikovKernel\"." )
+			
+		}
 		
 	} else{
 
@@ -84,7 +95,7 @@ kernel=epanechnikovKernel, tol.stop=1e-6, max.iter=100 ){
 	
 }
 
-bmsClustering <- function( X, h=NULL, kernel=epanechnikovKernel,
+bmsClustering <- function( X, h=NULL, kernel="epanechnikovKernel",
 tol.stop=1e-6, max.iter=100, tol.epsilon=1e-3 ){
 	
 	# minimal input checking
@@ -96,6 +107,13 @@ tol.stop=1e-6, max.iter=100, tol.epsilon=1e-3 ){
 		message( "The input matrix X has only one column: ",
 		"returning input.")
 		return( X )
+	}
+
+	if( !is.element( kernel, paste( c( "epanechnikov", "cubic", 
+	"gaussian", "exponential"), "Kernel", sep="" ) ) ){
+		
+		stop( "Invalid kernel name.")
+		
 	}
 	
 	if( !is.null( h ) && h <= 0 ){

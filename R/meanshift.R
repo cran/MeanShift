@@ -1,5 +1,5 @@
 meanShiftOperator <- function( x, points, h=1,
-kernel=epanechnikovKernel ){
+kernel="epanechnikovKernel" ){
 	
 	## mean-shift operator
 	
@@ -10,6 +10,7 @@ kernel=epanechnikovKernel ){
 	scaled.distances <- distances / h
 	
 	## evaluate kernel
+	kernel <- get( kernel )
 	kernel.values <- kernel( scaled.distances )
 	
 	## weights denominator
@@ -34,7 +35,7 @@ kernel=epanechnikovKernel ){
 
 ###
 
-meanShiftAlgorithm <- function( x, points, h=1, kernel=epanechnikovKernel,
+meanShiftAlgorithm <- function( x, points, h=1, kernel="epanechnikovKernel",
 tol.stop=1e-6 ){
 	
 	close.enough <- FALSE
@@ -63,7 +64,7 @@ tol.stop=1e-6 ){
 
 ###
 
-meanShiftAlgorithmAll <- function( X, h=NULL, kernel=epanechnikovKernel,
+meanShiftAlgorithmAll <- function( X, h=NULL, kernel="epanechnikovKernel",
 tol.stop=1e-6, multi.core=FALSE ){
 	
 	if( is.null( h ) ){
@@ -78,8 +79,8 @@ tol.stop=1e-6, multi.core=FALSE ){
 				
 		X.list <- lapply( apply( X, 2, list ), unlist )
 		
-		multi.core.output <- mclapply( X.list, meanShiftAlgorithm, points=X, h=h,
-		kernel=kernel, tol.stop=tol.stop )
+		multi.core.output <- mclapply( X.list, meanShiftAlgorithm,
+		points=X, h=h, kernel=kernel, tol.stop=tol.stop )
 		
 		output <- do.call( cbind, multi.core.output )
 		
@@ -93,7 +94,7 @@ tol.stop=1e-6, multi.core=FALSE ){
 		for( i in 1:n ){
 			
 			M[,i] <- meanShiftAlgorithm( x=X[,i], points=X, h=h,
-			kernel=kernel, tol.stop=tol.stop)
+			kernel=kernel, tol.stop=tol.stop )
 			
 			setTxtProgressBar( pb, i )
 			
@@ -113,7 +114,7 @@ tol.stop=1e-6, multi.core=FALSE ){
 
 ###
 
-msClustering <- function( X, h=NULL, kernel=epanechnikovKernel,
+msClustering <- function( X, h=NULL, kernel="epanechnikovKernel",
 tol.stop=1e-6, tol.epsilon=1e-3, multi.core=FALSE ){
 	
 	# minimal input checking
@@ -124,6 +125,13 @@ tol.stop=1e-6, tol.epsilon=1e-3, multi.core=FALSE ){
 		message( "The input matrix X has only one column: ",
 		"returning input.")
 		return( X )
+	}
+	
+	if( !is.element( kernel, paste( c( "epanechnikov", "cubic", 
+	"gaussian", "exponential"), "Kernel", sep="" ) ) ){
+		
+		stop( "Invalid kernel name.")
+		
 	}
 	
 	if( !is.null( h ) && h <= 0 ){

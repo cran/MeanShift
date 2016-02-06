@@ -11,7 +11,7 @@ sample at each iteration, the blurring version of the mean shift algorithm is
 often faster than the standard version (especially if the standard mean shift algorithm is run using a single core).
 }
 \usage{
-bmsClustering(X, h = NULL, kernel = epanechnikovKernel,
+bmsClustering(X, h = NULL, kernel = "epanechnikovKernel",
 tol.stop = 1e-06, max.iter = 100, tol.epsilon = 0.001)
 }
 %- maybe also 'usage' for other objects documented here.
@@ -23,12 +23,12 @@ a \eqn{p \times n} matrix containing \eqn{n \ge 1} \eqn{p}-dimensional numeric v
 a strictly positive bandwidth parameter.
 }
   \item{kernel}{
-a kernel function. The following kernels are supported: 
+a kernel function (as a character string). The following kernels are supported: 
 \itemize{
-\item Epanechnikov: \eqn{ K(x) = \frac{3}{2}(1-x^2)I_{[0,1]}(x) }; \code{kernel=epanechnikovKernel}
-\item cubic: \eqn{ K(x) = 4(1-x)^3I_{[0,1]}(x) }; \code{kernel=cubicKernel}
-\item Gaussian: \eqn{ K(x) = \sqrt{\frac{2}{\pi}}e^{-\frac{x^2}{2}}I_{[0,\infty)}(x) }; \code{kernel=gaussianKernel}
-\item exponential \eqn{ K(x) = e^{-x}I_{[0,\infty)}(x) }; \code{kernel=exponentialKernel}.
+\item Epanechnikov: \eqn{ K(x) = \frac{3}{2}(1-x^2)I_{[0,1]}(x) }; \code{kernel="epanechnikovKernel"}
+\item cubic: \eqn{ K(x) = 4(1-x)^3I_{[0,1]}(x) }; \code{kernel="cubicKernel"}
+\item Gaussian: \eqn{ K(x) = \sqrt{\frac{2}{\pi}}e^{-\frac{x^2}{2}}I_{[0,\infty)}(x) }; \code{kernel="gaussianKernel"}
+\item exponential \eqn{ K(x) = e^{-x}I_{[0,\infty)}(x) }; \code{kernel="exponentialKernel"}.
 }
 The use of the Epanechnikov kernel is recommended when using the blurring
 version of the mean shift algorithm.

@@ -1,14 +1,14 @@
 Package: MeanShift
 Type: Package
 Title: Clustering via the Mean Shift Algorithm
-Version: 1.0-1
+Version: 1.0-2
 Date: 2016-01-28
 Author: Mattia Ciollaro and Daren Wang
 Maintainer: Mattia Ciollaro <mattiaciollaro@gmail.com>
 Depends: parallel
-Description: Clustering using the mean shift algorithm (multi-core processing is supported) or its blurring version. See <https://normaldeviate.wordpress.com/2012/07/20/the-amazing-mean-shift-algorithm/> for more information.
+Description: Clustering using the mean shift algorithm (multi-core processing is supported) or its blurring version.
 License: GPL-3
 NeedsCompilation: no
-Packaged: 2016-02-02 18:03:10 UTC; mattiaciollaro
+Packaged: 2016-02-04 06:32:58 UTC; mattiaciollaro
 Repository: CRAN
-Date/Publication: 2016-02-03 01:03:22
+Date/Publication: 2016-02-06 11:20:22
