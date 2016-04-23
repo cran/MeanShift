@@ -1,7 +1,9 @@
 import("parallel")
+import("wavethresh")
 
 importFrom("stats", "dexp", "dist", "dnorm", "quantile")
 importFrom("utils", "setTxtProgressBar", "txtProgressBar")
 
 export("msClustering")
 export("bmsClustering")
+export("projectCurveWavelets")

@@ -90,10 +90,11 @@ clustering <- bmsClustering( iris.data )
 print( clustering )
 
 ## plot the clusters
+\dontrun{
 plot( iris.data[1,], iris.data[2,], col=clustering$labels+2, cex=0.8,
 pch=16, xlab="Sepal.Length", ylab="Sepal.Width" )
 points( clustering$components[1,], clustering$components[2,],
-col=2+( 1:ncol( clustering$components ) ), cex=1.8, pch=16 )
+col=2+( 1:ncol( clustering$components ) ), cex=1.8, pch=16 )}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

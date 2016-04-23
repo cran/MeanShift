@@ -1,4 +1,4 @@
-blurredMeanShiftOperator <- function( X, h=1, kernel="epanechnikovKernel" ){
+blurringMeanShiftOperator <- function( X, h=1, kernel="epanechnikovKernel" ){
 	
 	n.curves <- ncol( X )
 	
@@ -28,7 +28,7 @@ blurredMeanShiftOperator <- function( X, h=1, kernel="epanechnikovKernel" ){
 	
 }
 
-blurredMeanShiftAlgorithm <- function( X, h=NULL,
+blurringMeanShiftAlgorithm <- function( X, h=NULL,
 kernel="epanechnikovKernel", tol.stop=1e-6, max.iter=100 ){
 	
 	if( is.null( h ) ){
@@ -49,10 +49,10 @@ kernel="epanechnikovKernel", tol.stop=1e-6, max.iter=100 ){
 	## is smaller than 'max.iter'
 	while( !close.enough ){
 		
-		## apply blurred mean-shift operator and update
+		## apply blurring mean-shift operator and update
 		iter <- iter + 1
 		
-		new.X <- blurredMeanShiftOperator( X=old.X, h=h, kernel=kernel )
+		new.X <- blurringMeanShiftOperator( X=old.X, h=h, kernel=kernel )
 		
 		distance <- max( sqrt( colSums( old.X - new.X )^2 ) )
 		
@@ -87,7 +87,7 @@ kernel="epanechnikovKernel", tol.stop=1e-6, max.iter=100 ){
 		
 	} else{
 
-		message( "Blurred mean-shift algorithm ran successfully.\n")
+		message( "Blurring mean-shift algorithm ran successfully.\n")
 			
 	}
 	
@@ -135,15 +135,15 @@ tol.stop=1e-6, max.iter=100, tol.epsilon=1e-3 ){
 		
 	}
 	
-	## run blurred mean-shift algorithm
-	message( "\nRunning blurred mean-shift algorithm...\n" )
+	## run blurring mean-shift algorithm
+	message( "\nRunning blurring mean-shift algorithm...\n" )
 	
-	blurred.mean.shift.algorithm <- blurredMeanShiftAlgorithm( X=X,
+	blurring.mean.shift.algorithm <- blurringMeanShiftAlgorithm( X=X,
 	h=h, kernel=kernel, tol.stop=tol.stop, max.iter=max.iter )
 	
 	## find connected components
 	message( "Finding clusters..." )
-	output <- connectedComponents( X=blurred.mean.shift.algorithm,
+	output <- connectedComponents( X=blurring.mean.shift.algorithm,
 	tol.epsilon=tol.epsilon )
 	
 	invisible( output )

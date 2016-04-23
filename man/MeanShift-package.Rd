@@ -30,7 +30,7 @@ Maintainer: \packageMaintainer{MeanShift}
 \seealso{
 %%~~ Optional links to other man pages, e.g. ~~
 %%~~ \code{\link[<pkg>:<pkg>-package]{<pkg>}} ~~
-\code{\link{bmsClustering}}, \code{\link{msClustering}}
+\code{\link{bmsClustering}} \code{\link{msClustering}} \code{\link{projectCurveWavelets}}
 }
 %%\examples{
 %%
